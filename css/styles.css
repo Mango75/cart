@@ -1,0 +1,62 @@
+
+body{
+	width: 100%;
+	margin:0;
+	padding:0;
+	font-family: 'Droid Sans',sans-serif;
+	}
+
+
+table img{
+width:75%;
+
+}
+th{
+	font-size:700;
+}
+header, footer{
+height: 80px;
+background-color: #000;
+clear:both;
+text-align: center;
+}
+
+input{
+	background-color: #000;
+	height:30px;
+	border:none;
+	color:#fff;
+	float: right;
+
+}
+t
+.message{
+min-height:30px;
+background-color: #333;
+font-weight:700;
+color:#ddd;
+text-align: center;
+
+}
+.container{
+width:80%;
+margin:10px auto;
+clear: both;
+}
+
+.products, .cart{
+	width: 50%;
+	float:left;
+}
+
+.cart{
+	background-color: #ccc;
+	color: #fff;
+	height: 100%;
+	border:;
+}
+.cart h3{
+	border-bottom:solid 3px #444;
+	letter-spacing: 0.02em;
+	text-align:center;
+}
