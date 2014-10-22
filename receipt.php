@@ -21,12 +21,12 @@ if(isset($_POST['again'])){
  		
  	</header>
  	<div class="message">
- 		<?php ech $message; ?>
+ 		<?php echo $message; ?>
  	</div>
  	<div class="container">
  		<div class="receipt">
  			<?php
-
+ 			//function to print out a receipt
  			?>
  		</div>
  		<form>

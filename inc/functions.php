@@ -21,23 +21,28 @@ function add_products_to_cart($product){
 		}
 	}
 	$_SESSION['cart']=$newCart;
-	echo print_r($newCart);
-	$allProducts=convert_to_object_array();
+	$message=print_r($_SESSION['cart']);
+/*	$allProducts=convert_to_object_array();
 	echo "before :".print_r($allProducts);
+	$theCart;
 	foreach($allProducts as $cartitems){
+
 		foreach($newCart as $k => $v){
 			if($k==$cartitems->get_id()){
 				$cartq=$cartitems->get_quantity();
-				$newq= $cartq-$v;
+				$newq= $cartq->$v;
 				$cartitems->set_quantity($newq);
+				array_push($theCart, $cartitems);
 			}
 			else{
-				array_shift($allProducts);
+				continue;
 		 	}
 		}
 	}	
-	$message=print_r($allProducts);
+	$message=print_r($theCart);
+*/
 }
+
 function update_cart(){
 
 

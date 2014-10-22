@@ -5,9 +5,13 @@
       require'inc/class.database.php';
       require'inc/class.sessions.php';
       require'inc/functions.php';
-if(isset($_POST['again'])){
-	header("Location: index.php");
+if(isset($_POST['confirm'])){
 	
+	$session=new Session;
+	$session->stop_session();
+	//function to
+	$message="Tack för att du handlade, välkommen åter!<br/><a href=\"index.php\">Tillbaka till butiken</a>";
+
 }
 ?>
 <!DOCTYPE html>
@@ -30,8 +34,8 @@ if(isset($_POST['again'])){
 
  			?>
  		</div>
- 		<input type="submit" value="Beställ fler varor" name="again">
-		 		
+ 		<input type="submit" value="Slutför order" name="confirm">
+		<a href="" 
  	</div>
  	<footer>
  		
