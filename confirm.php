@@ -26,7 +26,7 @@ if(isset($_POST['confirm'])){
  		
  	</header>
  	<div class="message">
- 		<?php ech $message; ?>
+ 		<?php echo $message; ?>
  	</div>
  	<div class="container">
  		<div class="receipt">

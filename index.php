@@ -1,5 +1,5 @@
 <?php session_start(); 
-    
+      
       require'inc/class.product.php';
       require'inc/class.database.php';
       require'inc/class.sessions.php';
@@ -70,11 +70,17 @@
         </th>
         <?php 
             $theProducts=get_products_in_cart();
+            $thetotal
             foreach($theProducts as $product){
-              echo "<tr><td>".$product->get_name()."</td><td>".$product->get_quantity()."</td><td>".product->get_price()."</td></tr>"
-            }
+              echo "<tr><td>".$product->get_name()."</td><td>".$product->get_quantity()."</td><td>".product->get_price()."</td><tr>".$theSub=$product->get_quantity()*$product->get_price()."</tr></tr>"
+            }$theTotal=$thetotal+$theSub;
         ?>
   </table>
+      <?php if($isset($theTotal)){
+
+        echo "<p class=\"total\">Totalpriset är ".$theTotal."</p>";
+
+      }?>
       <input type="submit" name="update" value="Uppdatera varukorg"/>
       <input type="submit" name="confirm" value="Slutför order"/>
       </form>
