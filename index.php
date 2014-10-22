@@ -24,7 +24,6 @@
    <meta  charset="utf-8">
    <link rel="stylesheet" type="text/css"  href="css/styles.css"/>
    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
-    
   </head>
   <body>
     <header>
@@ -69,12 +68,12 @@
           <td>Pris</td>
           <td>Subtotal</td>
         </th>
-    <?php
-
-
-    
-
-    ?>
+        <?php 
+            $theProducts=get_products_in_cart();
+            foreach($theProducts as $product){
+              echo "<tr><td>".$product->get_name()."</td><td>".$product->get_quantity()."</td><td>".product->get_price()."</td></tr>"
+            }
+        ?>
   </table>
       <input type="submit" name="update" value="Uppdatera varukorg"/>
       <input type="submit" name="confirm" value="Slutför order"/>
