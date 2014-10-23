@@ -32,7 +32,7 @@ public function insert_product($name, $price, $quantity){
 //Metod för att hämta namn och pris
 public function get_product_info($theid){
  	$this->open_connection();
- 	$sql= "SELECT PrName,PrPrice FROM  Product WHERE PrID =".$theid.";";
+ 	$sql= "SELECT * FROM  Product WHERE PrID ={$theid}";
  	$result=mysqli_query($this->conne, $sql);
  	return $result;
  	 mysqli_close($this->conne);

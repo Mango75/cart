@@ -12,35 +12,23 @@
     return $theObjects;
      }
 function add_products_to_cart($product){
-	$newCart=array();
-	foreach ($product as $item=>$value){
-		if($value==0||$value=='add'|| $value=='confirm'|| $value=='update'){
-			continue;
-		}else{
-			$newCart[$item]=$value;
-		}
-	}
-	$_SESSION['cart']=$newCart;
-	$message=print_r($_SESSION['cart']);
-/*	$allProducts=convert_to_object_array();
-	echo "before :".print_r($allProducts);
-	$theCart;
-	foreach($allProducts as $cartitems){
+	$cartArray=array();
+	foreach($product as $objkey => $objvalue){
+			if($objvalue>0){
+			$db =new Database;
+			$rows=$db->get_product_info($objkey);
+			while($rowinfo=mysqli_fetch_array($rows)){
+				$pro= new Product;
+				$pro->set_all_attr($rowinfo['PrID'], $rowinfo['PrName'], $rowinfo['PrPrice'],$objvalue,$rowinfo['PrPic']);
+				array_push($cartArray, $pro);
+			    }
 
-		foreach($newCart as $k => $v){
-			if($k==$cartitems->get_id()){
-				$cartq=$cartitems->get_quantity();
-				$newq= $cartq->$v;
-				$cartitems->set_quantity($newq);
-				array_push($theCart, $cartitems);
+			}else{
+			continue;
 			}
-			else{
-				continue;
-		 	}
 		}
-	}	
-	$message=print_r($theCart);
-*/
+	$_SESSION['cart']=$cartArray;
+
 }
 
 function update_cart(){

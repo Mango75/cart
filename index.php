@@ -38,7 +38,7 @@
       <form method="post">
         <table>
           <tr>
-            <th>Id</th>
+            <th></th>
             <th>Produkt</th>
             <th>Pris</th>
             <th>Lagersaldo</th>
@@ -47,7 +47,7 @@
           <?php
            $theResult=$DB->get_products();
            while($row=mysqli_fetch_array($theResult,MYSQLI_ASSOC)){
-            echo "<tr> <td><div class=\"product-id\"><p>".$row['PrID']."</p><img src=\"".$row['PrPic']."\"/></div></td><td>".$row['PrName']."</td><td>".$row['PrPrice']."</td><td><select name=\"".$row['PrID']."\">";
+            echo "<tr> <td><div class=\"product-id\"><img src=\"".$row['PrPic']."\"/></div></td><td>".$row['PrName']."</td><td>".$row['PrPrice']."</td><td><select name=\"".$row['PrID']."\">";
             for($i=0; $i<=$row['PrQuantity']; $i++){ 
               echo "<option>".$i."</option>";
           }
@@ -57,34 +57,37 @@
           </table>
       <input type="submit" name="add" value="Lägg i varukorg"/>
     </form>
-</div>
-    <div class="cart">
-      <h3>Varukorg</h3>
+  </div>
+  <div class="cart">
+    <h3>Varukorg</h3>
       <form method="post">
         <table>
-        <th>
-          <td>Antal</td>
-          <td>Namn</td>
-          <td>Pris</td>
-          <td>Subtotal</td>
-        </th>
+          <tr>
+            <th>Namn</th>
+            <th>Antal</th>
+            <th>Pris</th>
+            <th>Subtotal</th>
+          </tr>
         <?php 
-            $theProducts=get_products_in_cart();
-            $thetotal
-            foreach($theProducts as $product){
-              echo "<tr><td>".$product->get_name()."</td><td>".$product->get_quantity()."</td><td>".product->get_price()."</td><tr>".$theSub=$product->get_quantity()*$product->get_price()."</tr></tr>"
-            }$theTotal=$thetotal+$theSub;
-        ?>
-  </table>
-      <?php if($isset($theTotal)){
-
-        echo "<p class=\"total\">Totalpriset är ".$theTotal."</p>";
-
-      }?>
+            if(isset($_SESSION['cart'])){   
+              $thetotal=0;
+              foreach($_SESSION['cart'] as $product){
+                echo "<tr><td>".$product->get_name()."</td><td><select name=\"updatePrID\">";
+                for($i=0;$i<=$product->get_quantity();$i++){
+                  echo "<option"; 
+                  if($i== $product->get_quantity()){echo " selected=\"selected\"";
+                  }echo ">".$i."</option>";
+                }
+                echo "</select></td><td>".$product->get_price()."</td><td>".$theSub=$product->get_quantity()*$product->get_price()."</td></tr>";
+                $thetotal=$thetotal+$theSub;
+              }
+              echo "<td></td><td></td><td>Total</td><td><strong>".$thetotal."</strong></td></tr>";
+            }?>
+      </table>
       <input type="submit" name="update" value="Uppdatera varukorg"/>
       <input type="submit" name="confirm" value="Slutför order"/>
-      </form>
-    </div>
+    </form>
+   </div>
   </div>
   <footer></footer>
   </body>
