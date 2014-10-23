@@ -27,6 +27,13 @@ function add_products_to_cart($product){
 			continue;
 			}
 		}
+		if(isset($_SESSION['cart'])){
+			foreach ($product as $key => $value) {
+				# code... for updating use in_array function
+				#or double loops
+			}
+
+		}
 	$_SESSION['cart']=$cartArray;
 
 }

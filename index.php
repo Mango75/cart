@@ -6,11 +6,15 @@
       require'inc/functions.php';
           $DB = new Database;
       if(isset($_POST['add'])){
+        if(isset($_SESSION['cart'])){
+          
+        }
         add_products_to_cart($_POST);
         $message="Produkter lagda i varukorgen";
         }
         elseif (isset($_POST['update'])) {
           //function to update cart
+          add_products_to_cart($_POST);
           $message="Ändringar utförda";
         }
         elseif (isset($_POST['confirm'])) {
@@ -72,7 +76,7 @@
             if(isset($_SESSION['cart'])){   
               $thetotal=0;
               foreach($_SESSION['cart'] as $product){
-                echo "<tr><td>".$product->get_name()."</td><td><select name=\"updatePrID\">";
+                echo "<tr><td>".$product->get_name()."</td><td><select name=\"".$product->get_id()."\">";
                 for($i=0;$i<=$product->get_quantity();$i++){
                   echo "<option"; 
                   if($i== $product->get_quantity()){echo " selected=\"selected\"";
@@ -84,7 +88,7 @@
               echo "<td></td><td></td><td>Total</td><td><strong>".$thetotal."</strong></td></tr>";
             }?>
       </table>
-      <input type="submit" name="update" value="Uppdatera varukorg"/>
+      <input type="submit" name="update" value="Ändra antal"/>
       <input type="submit" name="confirm" value="Slutför order"/>
     </form>
    </div>

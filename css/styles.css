@@ -47,6 +47,7 @@ text-align: center;
 width:80%;
 margin:10px auto;
 clear: both;
+padding-bottom: 80px;
 }
 
 .products{
@@ -70,4 +71,7 @@ float: left;
 	letter-spacing: 0.02em;
 	text-align:center;
 	padding-bottom: 30px;
+}
+.cart table{
+	margin:30px;
 }
